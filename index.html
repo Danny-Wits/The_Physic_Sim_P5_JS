@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="main">
+      <div id="menu">
+        <h4>Physics Objects</h4>
+        <div id="inputs">
+          <label for="Name">Name</label>
+          <input id="Name" type="text" />
+          <label for="mass">Mass</label>
+          <input id="mass" type="number" />
+          <label for="radius">Radius</label>
+          <input type="range" id="radius" min="0" max="100" value="30" />
+          <label for="velX">Velocity X</label>
+          <input id="velX" type="number" />
+          <label for="velY">Velocity Y</label>
+          <input id="velY" type="number" />
+          <label for="accX">Acceleration X</label>
+          <input id="accX" type="number" />
+          <label for="clr">Color</label>
+          <input id="clr" type="color" />
+          <label for="accY">Acceleration Y</label>
+          <input id="accY" type="number" />
+          <div id="options">
+            <label for="showPath">showPath</label>
+            <input type="checkbox" id="showPath" />
+          </div>
+          <p>Click on the canvas to create an object</p>
+        </div>
+
+        <div id="controls">
+          <button onclick="resetInputs()">Reset Inputs</button>
+          <button onclick="resetObjects()">Reset Objects</button>
+        </div>
+        <p>Click to Delete the object and its path</p>
+        <div id="objects"></div>
+      </div>
+
+      <main></main>
+    </div>
+    <p id="credits">-Created by DannyWits-</p>
+    <script src="physic.js"></script>
+    <script src="sketch.js"></script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+canvas {
+  display: block;
+}
+#main {
+  display: flex;
+}
+#menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  margin-right: 4px;
+  border-right: #aaaaaa solid 2px;
+}
+#options {
+  display: flex;
+  align-items: flex-start;
+}
+p#credits {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font: 14px "Courier New", Courier, monospace;
+  color: #333;
+}
+
+button {
+  margin: 5px;
+  border-radius: 10px;
+  padding: 8px;
+  background-color: #ce7eff;
+  border: none;
+  font-weight: 700;
+  color: #fbf9f9;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    background-color: #000000;
+  }
+}
+#inputs {
+  display: flex;
+  flex-direction: column;
+  box-shadow: #2828283b 0px 0px 10px;
+  padding: 10px;
+  border-radius: 10px;
+
+  input {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+
+  label {
+    font-weight: bold;
+    color: #333;
+  }
+}
+#controls {
+  display: flex;
+  flex-direction: row;
+}
+#objects {
+  max-width: 200px;
+  max-height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
