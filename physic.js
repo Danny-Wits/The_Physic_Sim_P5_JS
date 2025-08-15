@@ -63,10 +63,12 @@ class PhysicsEngine {
 
   update(phyObjects) {
     for (let pObj of phyObjects) {
+      if (phyObjects.length > 1) {
+        pObj.acc.set(0, 0);
+      }
       //Updating Acceleration based on the gravitational pull
       for (let obj of phyObjects) {
         if (obj.id !== pObj.id) {
-          obj.acc.set(0, 0);
           let force = pObj.pos.copy().sub(obj.pos);
           let dist = force.mag();
           let strength = -1 * pObj.mass * obj.mass * this.gravityIntensity;
@@ -103,9 +105,8 @@ class PhysicsEngine {
       pObj.pos.add(pObj.vel);
       //dampening
       if (pObj.dampening) {
-        1;
-        pObj.vel.mult(0.99);
-        pObj.acc.mult(0.99);
+        pObj.vel.mult(0.99999);
+        pObj.acc.mult(0.99999);
       }
     }
   }
