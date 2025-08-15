@@ -32,6 +32,7 @@ function canvasClicked() {
   let mass = int(menuItems[6].value());
   let color = menuItems[7].value();
   let radius = int(menuItems[8].value());
+  let dampening = menuItems[9].checked();
   objects.push(
     new PhysicsSphere(
       name,
@@ -41,6 +42,7 @@ function canvasClicked() {
       createVector(accX, accY),
       mass,
       showPath,
+      dampening,
       color
     )
   );
@@ -57,6 +59,7 @@ function setUpMenu() {
   let massInput = select("#mass");
   let colorInput = select("#clr");
   let radiusInput = select("#radius");
+  let dampeningInput = select("#dampening");
   //initialize
   velXInput.value(0);
   velYInput.value(0);
@@ -64,7 +67,8 @@ function setUpMenu() {
   accYInput.value(0);
   nameInput.value("Obj" + counter);
   showPathInput.checked(false);
-  massInput.value(1);
+  dampeningInput.checked(false);
+  massInput.value(10);
   colorInput.value("#ff0000");
 
   menuItems = [
@@ -77,6 +81,7 @@ function setUpMenu() {
     massInput,
     colorInput,
     radiusInput,
+    dampeningInput,
   ];
 }
 function resetInputs() {
@@ -86,9 +91,10 @@ function resetInputs() {
   menuItems[3].value(0);
   menuItems[4].value(0);
   menuItems[5].checked(false);
-  menuItems[6].value(1);
+  menuItems[6].value(10);
   menuItems[7].value("#ff0000");
   menuItems[8].value(30);
+  menuItems[9].checked(false);
 }
 function createOptions(objects) {
   let options = "";

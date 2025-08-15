@@ -1,11 +1,12 @@
 class PhysicsObject {
-  constructor(name, pos, vel, acc, mass) {
+  constructor(name, pos, vel, acc, mass, dampening) {
     this.id = random().toString().substring(10);
     this.name = name;
     this.pos = pos;
     this.vel = vel;
     this.mass = mass;
     this.acc = acc;
+    this.dampening = dampening;
   }
   stop() {
     this.vel.x = 0;
@@ -16,8 +17,18 @@ class PhysicsObject {
 }
 
 class PhysicsSphere extends PhysicsObject {
-  constructor(name, radius, pos, vel, acc, mass, showPath, clr = "cyan") {
-    super(name, pos, vel, acc, mass);
+  constructor(
+    name,
+    radius,
+    pos,
+    vel,
+    acc,
+    mass,
+    showPath,
+    dampening,
+    clr = "cyan"
+  ) {
+    super(name, pos, vel, acc, mass, dampening);
     this.radius = radius;
     this.showPath = showPath;
     this.clr = clr;
@@ -52,10 +63,10 @@ class PhysicsEngine {
 
   update(phyObjects) {
     for (let pObj of phyObjects) {
-      pObj.acc.set(0, 0);
       //Updating Acceleration based on the gravitational pull
       for (let obj of phyObjects) {
         if (obj.id !== pObj.id) {
+          obj.acc.set(0, 0);
           let force = pObj.pos.copy().sub(obj.pos);
           let dist = force.mag();
           let strength = -1 * pObj.mass * obj.mass * this.gravityIntensity;
@@ -90,6 +101,12 @@ class PhysicsEngine {
       }
       //Updating the position based on updated velocities
       pObj.pos.add(pObj.vel);
+      //dampening
+      if (pObj.dampening) {
+        1;
+        pObj.vel.mult(0.99);
+        pObj.acc.mult(0.99);
+      }
     }
   }
 }
